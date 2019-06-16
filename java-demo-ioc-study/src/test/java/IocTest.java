@@ -7,9 +7,9 @@ public class IocTest {
     @Before
     public void before(){
         //把bean依次注册到容器中
-        iocController.setBean(ZhangSan.class,ZhangSan.class.getName(),Audi.class.getName());
         iocController.setBean(BMW.class,BMW.class.getName());
         iocController.setBean(Audi.class,Audi.class.getName());
+        iocController.setBean(ZhangSan.class,ZhangSan.class.getName(),Audi.class.getName());
         iocController.setBean(LiSi.class,LiSi.class.getName(),BMW.class.getName());
     }
     @Test
