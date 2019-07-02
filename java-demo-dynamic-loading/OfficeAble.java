@@ -1,0 +1,3 @@
+interface OfficeAble{
+	void start();
+}
