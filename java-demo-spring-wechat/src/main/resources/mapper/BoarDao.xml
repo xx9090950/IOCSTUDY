@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.javademospringwechat.dao.BoardDao">
+    <select id="queryBoard" resultType="com.study.javademospringwechat.entity.Board">
+        SELECT  * FROM board
+    </select>
+    <select id="queryBoardById" resultType="com.study.javademospringwechat.entity.Board">
+        SELECT  * FROM board
+        WHERE id=#{id}
+    </select>
+    <insert id="insertBoard" parameterType="com.study.javademospringwechat.entity.Board"
+            useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO (id,username,content,create_time)values (
+          #{id},#{username},#{content},#{createTime}
+        )
+    </insert>
+    <update id="updateBoard" parameterType="com.study.javademospringwechat.entity.Board">
+        UPDATE board
+        <set>
+            <if test="username!=null">username=#{username}</if>
+            <if test="content!=null">username=#{content}</if>
+        </set>
+        WHERE  id=#{id}
+    </update>
+
+    <delete id="deleteBoard" parameterType="com.study.javademospringwechat.entity.Board">
+        DELETE FROM  board
+        WHERE id=#{id}
+    </delete>
+</mapper>
