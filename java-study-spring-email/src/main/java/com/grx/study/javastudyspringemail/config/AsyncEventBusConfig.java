@@ -19,13 +19,12 @@ public class AsyncEventBusConfig {
         return new AsyncEventBus(executor);
     }
 
-    @Bean
-    public ThreadPoolExecutor executor(){
-        ThreadPoolExecutor executor=new
+
+    private ThreadPoolExecutor executor(){
+        return new
                 ThreadPoolExecutor(2,
                 2,0L,
                 TimeUnit.MICROSECONDS,
                 new LinkedBlockingQueue<>());
-        return executor;
     }
 }
