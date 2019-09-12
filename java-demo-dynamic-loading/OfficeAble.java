@@ -1,3 +1,3 @@
-interface OfficeAble{
-	void start();
+interface OfficeAble {
+    void start();
 }

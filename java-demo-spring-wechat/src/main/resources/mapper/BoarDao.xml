@@ -12,14 +12,14 @@
     </select>
     <insert id="insertBoard" parameterType="com.study.javademospringwechat.entity.Board"
             useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-        INSERT INTO (id,username,content,create_time)values (
-          #{id},#{username},#{content},#{createTime}
+        INSERT INTO board (id,username,content,create_time)values (
+          #{id},#{userName},#{content},#{createTime}
         )
     </insert>
     <update id="updateBoard" parameterType="com.study.javademospringwechat.entity.Board">
         UPDATE board
         <set>
-            <if test="username!=null">username=#{username}</if>
+            <if test="username!=null">username=#{userName}</if>
             <if test="content!=null">username=#{content}</if>
         </set>
         WHERE  id=#{id}

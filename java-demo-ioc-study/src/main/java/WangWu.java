@@ -1,8 +1,8 @@
 public class WangWu {
     //回家
-    public void goHome(){
+    public void goHome() {
         //实例化一辆宝马车
-        BMW bmw=new BMW();
+        BMW bmw = new BMW();
         //宝马启动
         bmw.start();
         //左转

@@ -3,7 +3,10 @@
  */
 public interface Car {
     void start();
+
     void left();
+
     void right();
+
     void stop();
 }

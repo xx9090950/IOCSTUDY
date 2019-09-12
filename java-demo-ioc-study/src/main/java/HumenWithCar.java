@@ -2,7 +2,7 @@
  * 有车一族，继承人类
  */
 public abstract class HumenWithCar implements Human {
-    protected  Car car;
+    protected Car car;
 
     public HumenWithCar(Car car) {
         this.car = car;

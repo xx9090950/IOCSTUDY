@@ -38,6 +38,11 @@ public class MailController {
         return result.success(1);
     }
 
+    /**
+     * 发送图文邮件
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/sendImgMail", method = RequestMethod.POST)
     public Result<Integer> sendImgMail(@RequestBody Request<ImgEmailDTO> request) {
         Result<Integer> result = Result.create();
@@ -45,6 +50,7 @@ public class MailController {
         //组装一下content
         StringBuilder sb=new StringBuilder();
         sb.append(imgEmailDTO.getImgContent());
+        //cid:资源id。在spring中会自动绑定
         sb.append("<img src=\'cid:").append(imgEmailDTO.getRscId()).append("\'></img>");
         imgEmailDTO.setImgContent(sb.toString());
         asyncEventBus.post(imgEmailDTO);

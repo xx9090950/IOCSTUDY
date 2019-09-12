@@ -16,13 +16,13 @@ class ClassUtil {
             Class returnType = md.getReturnType();
             System.out.print(returnType.getName());
             //获取方法名
-            System.out.print(md.getName()+" (");
+            System.out.print(md.getName() + " (");
             //获取方法入参类型的类类型 因为入参可能有多个，所以是数组
-            Class[] parameterTypes= md.getParameterTypes();
+            Class[] parameterTypes = md.getParameterTypes();
             for (int i = 0; i < parameterTypes.length; i++) {
                 //打印入参的类名
                 System.out.print(parameterTypes[i].getName());
-                if (i!=parameterTypes.length-1) {
+                if (i != parameterTypes.length - 1) {
                     System.out.print(",");
                 }
             }

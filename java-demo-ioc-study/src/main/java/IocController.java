@@ -16,8 +16,8 @@ public class IocController {
 
     public Object getBean(String beanId) {
         //传入键值，到容器中取对应的bean
-        Object bean=beans.get(beanId);
-        if (bean==null) {
+        Object bean = beans.get(beanId);
+        if (bean == null) {
             throw new RuntimeException("所需对象在容器中没有找到");
         }
         return bean;
@@ -25,8 +25,9 @@ public class IocController {
 
     /**
      * 将所需要的bean放入容器
-     * @param clazz 所需要的对象的类
-     * @param beanId 创建bean对象在容器中的id
+     *
+     * @param clazz       所需要的对象的类
+     * @param beanId      创建bean对象在容器中的id
      * @param relyBeanIds 依赖对象在容器的beanId（有可能有多个，就传多个）
      */
     public void setBean(Class<?> clazz, String beanId, String... relyBeanIds) {
@@ -53,7 +54,7 @@ public class IocController {
         }
         //将实例化好的对象放到容器中
 
-        beans.put(beanId,bean);
+        beans.put(beanId, bean);
 
     }
 }

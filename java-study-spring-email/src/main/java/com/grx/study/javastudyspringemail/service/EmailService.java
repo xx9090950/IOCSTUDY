@@ -17,14 +17,22 @@ public class EmailService {
     @Autowired
     private JavaMailSender javaMailSender;
 
+    /**
+     * 发件人。这里发件人一般是同使用的发件邮箱一致
+     */
     @Value("${spring.mail.username}")
     private String from;
 
-    public void sayHello() {
-        System.out.println("Hello world");
-    }
 
-    public void sendTextMail(String to, String subject, String content) {
+    /**
+     * 发送文本邮件
+     * @param to 收件人邮箱地址
+     * @param subject 主题
+     * @param content 内容
+     */
+    public void sendTextMail(String to,
+                             String subject,
+                             String content) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         simpleMailMessage.setTo(to);
         simpleMailMessage.setSubject(subject);
@@ -34,24 +42,46 @@ public class EmailService {
     }
 
 
-    public void sendHtmlMail(String to, String htmlContent, String subject) throws MessagingException {
+    /**
+     * 发送html内容的邮件
+     * @param to 收件人
+     * @param htmlContent html内容
+     * @param subject 主题
+     * @throws MessagingException
+     */
+    public void sendHtmlMail(String to,
+                             String htmlContent,
+                             String subject) throws MessagingException {
         MimeMessage message = javaMailSender.createMimeMessage();
-        MimeMessageHelper messageHelper = new MimeMessageHelper(message,true);
+        MimeMessageHelper messageHelper = new MimeMessageHelper(message, true);
         messageHelper.setTo(to);
         messageHelper.setSubject(subject);
         messageHelper.setFrom(from);
-        messageHelper.setText(htmlContent,true);
+        messageHelper.setText(htmlContent, true);
         javaMailSender.send(message);
     }
 
-    public void sendImgMail(String to ,String imgContent,String subject,String rscId,String imgPath) throws MessagingException {
-        MimeMessage message =javaMailSender.createMimeMessage();
-        MimeMessageHelper messageHelper = new MimeMessageHelper(message,true);
+    /**
+     * 发送图文邮件
+     * @param to 收件人
+     * @param imgContent 图文内容
+     * @param subject 主题
+     * @param rscId 资源id
+     * @param imgPath 资源路径
+     * @throws MessagingException
+     */
+    public void sendImgMail(String to,
+                            String imgContent,
+                            String subject,
+                            String rscId,
+                            String imgPath) throws MessagingException {
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper messageHelper = new MimeMessageHelper(message, true);
         messageHelper.setTo(to);
         messageHelper.setSubject(subject);
         messageHelper.setFrom(from);
-        messageHelper.setText(imgContent,true);
-        messageHelper.addInline(rscId,new File(imgPath));
+        messageHelper.setText(imgContent, true);
+        messageHelper.addInline(rscId, new File(imgPath));
         javaMailSender.send(message);
     }
 }
